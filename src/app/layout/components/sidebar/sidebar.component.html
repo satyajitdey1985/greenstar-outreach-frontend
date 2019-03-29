@@ -1,0 +1,155 @@
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+  <ul class="nav">
+    <li class="nav-item nav-profile">
+      <div class="nav-link">
+        <div class="user-wrapper">
+          <div class="profile-image">
+            <img src="assets/images/faces/face1.jpg" alt="profile image">
+          </div>
+          <div class="text-wrapper">
+            <p class="profile-name">{{userDetails.userName}}</p>
+            <div>
+              <small class="designation text-muted"></small>
+              <span class="status-indicator online"></span>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </li>
+    <li class="nav-item">
+      {{userDetails.roleID}}
+      <!-- <a class="nav-link" routerLink="/dashboard" routerLinkActive="active" *ngIf="userDetails.roleID==1"> -->
+        <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">
+        <i class="menu-icon mdi mdi-television"></i>
+        <span class="menu-title">Dashboard</span>
+      </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link"  routerLinkActive="active">
+          <i class="menu-icon mdi mdi-notification-clear-all"></i>
+          <span class="menu-title">Green Star</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active">
+            <i class="menu-icon mdi mdi-notification-clear-all"></i>
+            <span class="menu-title">Performance Tracker
+              </span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active">
+              <i class="menu-icon mdi mdi-notification-clear-all"></i>
+              <span class="menu-title">Manage
+                </span>
+            </a>
+            <ul >
+              <li>
+                  <a class="nav-link" routerLinkActive="active" routerLink="/group-details">
+                      <i class="menu-icon mdi mdi-notification-clear-all"></i>
+                      <span class="menu-title">Group Management
+                        </span>
+                    </a>
+              </li>
+              <li>
+                  <a class="nav-link" routerLink="/student" routerLinkActive="active">
+                      <i class="menu-icon mdi mdi-notification-clear-all"></i>
+                      <span class="menu-title">Student Management
+                        </span>
+                    </a>
+              </li>
+              <li>
+                <a class="nav-link" routerLink="/student-performance" routerLinkActive="active">
+                    <i class="menu-icon mdi mdi-notification-clear-all"></i>
+                    <span class="menu-title">Student Performance
+                      </span>
+                  </a>
+            </li>
+              <li>
+                  <a class="nav-link" routerLink="/school" routerLinkActive="active">
+                      <i class="menu-icon mdi mdi-notification-clear-all"></i>
+                      <span class="menu-title">School Management
+                        </span>
+                    </a>
+              </li>
+              <li>
+                  <a class="nav-link" routerLinkActive="active">
+                      <i class="menu-icon mdi mdi-notification-clear-all"></i>
+                      <span class="menu-title">Class Management
+                        </span>
+                    </a>
+              </li>
+              <li>
+                  <a class="nav-link" routerLink="/city" routerLinkActive="active">
+                      <i class="menu-icon mdi mdi-notification-clear-all"></i>
+                      <span class="menu-title">City Management
+                        </span>
+                    </a>
+              </li>
+              <li>
+                  <a class="nav-link" routerLink="/state" routerLinkActive="active">
+                      <i class="menu-icon mdi mdi-bike"></i>
+                      <span class="menu-title">State Management
+                        </span>
+                    </a>
+              </li>
+              <li>
+                  <a class="nav-link" routerLinkActive="active">
+                      <i class="menu-icon mdi mdi-notification-clear-all"></i>
+                      <span class="menu-title">Role Management
+                        </span>
+                    </a>
+              </li>
+              <li>
+                  <a class="nav-link" routerLink="/holiday-calendar" routerLinkActive="active">
+                      <i class="menu-icon mdi mdi-notification-clear-all"></i>
+                      <span class="menu-title">Holiday Tracker
+                        </span>
+                    </a>
+              </li>
+              <li>
+                  <a class="nav-link" routerLinkActive="active">
+                      <i class="menu-icon mdi mdi-notification-clear-all"></i>
+                      <span class="menu-title">Performance Attribute Management
+                        </span>
+                    </a>
+              </li>
+              <li>
+                  <a class="nav-link" routerLinkActive="active">
+                      <i class="menu-icon mdi mdi-notification-clear-all"></i>
+                      <span class="menu-title">User management
+                        </span>
+                    </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link"  routerLinkActive="active">
+                <i class="menu-icon mdi mdi-notification-clear-all"></i>
+                <span class="menu-title">Report</span>
+              </a>
+            </li>
+
+    <!-- <li class="nav-item">
+      <a class="nav-link" routerLink="/state" routerLinkActive="active">
+        <i class="menu-icon mdi mdi-notification-clear-all"></i>
+        <span class="menu-title">Manage</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/city" routerLinkActive="active">
+        <i class="menu-icon mdi mdi-notification-clear-all"></i>
+        <span class="menu-title">City</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/holiday-calendar" routerLinkActive="active">
+        <i class="menu-icon mdi mdi-notification-clear-all"></i>
+        <span class="menu-title">Holiday Calendar</span>
+      </a>
+    </li> -->
+  </ul>
+</nav>

@@ -1,0 +1,117 @@
+<div class="row">
+  <div class="col-sm-2">
+    <label for="inputState">State</label>
+    <select class="form-control" [(ngModel)]="selectedStateID" required #statID="ngModel" name="state"
+      (change)="getCityByStateID(selectedStateID)">
+      <option selected>Select State</option>
+      <option *ngFor="let state of stateList" value="{{state.statID}}">{{state.statName}}</option>
+    </select>
+    <div *ngIf="statID.invalid && (statID.dirty || statID.touched)" class="alert alert-danger">
+      Required
+    </div>
+  </div>
+  <div class="col-sm-2">
+    <label for="inputCity">City</label>
+    <select class="form-control" [(ngModel)]="selectedCityID" required #cityID="ngModel" name="City"
+      (change)="getSchoolByCity(selectedCityID)">
+      <option selected>Select City</option>
+      <option *ngFor="let city of cityList" value="{{city.cityID}}">{{city.cityName}}</option>
+    </select>
+    <div *ngIf="cityID.invalid && (cityID.dirty || cityID.touched)" class="alert alert-danger">
+      Required
+    </div>
+  </div>
+  <div class="col-sm-2">
+    <label for="inputSchool">School</label>
+    <select class="form-control" [(ngModel)]="selectedSchoolID" required #schoolID="ngModel" name="School"
+      (change)="getClassBySchool(selectedSchoolID)">
+      <option selected>Select School</option>
+      <option *ngFor="let school of schoolList" value="{{school.schlID}}">{{school.schoolName}}</option>
+    </select>
+    <div *ngIf="schoolID.invalid && (schoolID.dirty || schoolID.touched)" class="alert alert-danger">
+      Required
+    </div>
+  </div>
+  <div class="col-sm-2">
+    <label for="inputClass">Class-Section</label>
+    <select class="form-control" [(ngModel)]="selectedClassID" required #classDetailsID="ngModel" name="Class-Section"
+      (change)="getStudentByClassID(selectedClassID)">
+      <option selected>Select Class-Section</option>
+      <option *ngFor="let classDetails of classDetailsList" value="{{classDetails.classID}}">
+        {{classDetails.classStandard + "-" + classDetails.sectName}}
+      </option>
+    </select>
+    <div *ngIf="classDetailsID.invalid && (classDetailsID.dirty || classDetailsID.touched)" class="alert alert-danger">
+      Required
+    </div>
+  </div>
+  <div class="col-sm-2">
+    <div class="input-group">
+      <label for="inputDate">Date</label>
+      <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="performanceDate" ngbDatepicker
+        #d="ngbDatepicker">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+          <i class="fa fa-calendar"></i></button>
+      </div>
+      <!-- <div *ngIf="d.invalid && (d.dirty || d.touched)" class="alert alert-danger">
+        Required
+      </div> -->
+    </div>
+  </div>
+</div>
+<div class="row">
+
+</div>
+<div class="row">
+  <div class="col-sm-10">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Roll No</th>
+            <th *ngFor="let paramAttr of paramAttrList;">{{paramAttr.paramName}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let student of studentList; let i=index;">
+            <td>{{student.studID}}</td>
+            <td>{{student.studName}}</td>
+            <td>{{student.rollNo}}</td>
+            <td *ngFor="let paramAttr of paramAttrList; let j = index">
+              <!-- <input type="checkbox"  [(ngModel)]="checkBoxValue"  name="paramAttr_{{student.studID}}_{{paramAttr.paramID}}" (change) ="updateSelectedParamValueChange($event)"/> -->
+              <input type="checkbox" name="paramAttr_{{student.studID}}_{{paramAttr.paramID}}"
+                (change)="updateSelectedParamValueChange($event,$event.target.checked)" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-02"><button class="btn btn-info" (click)="saveOrUpdatePerformance(studentResult)">Save
+      Performance</button></div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <input #file type="file" multiple (change)="upload(file.files)" />
+    <br />
+    <span class="input-group-text" *ngIf="progress > 0 && progress < 100">
+      {{progress}}%
+    </span>
+    <span class="input-group-text" *ngIf="message">
+      {{message}}
+    </span>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-10">
+    <button class="btn btn-info" (click)="downloadTemplate()">Download Template</button>
+    <div *ngIf="downloadedFileName != null">
+        <a routerLink="[templateFullPath]" routerLinkActive="active-link">Download Template</a>
+    </div>
+  </div>
+</div>

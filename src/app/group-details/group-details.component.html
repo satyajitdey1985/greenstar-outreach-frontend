@@ -1,0 +1,130 @@
+<div class="row">
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Add Members In Group</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+          <label for="groupName">Group Name</label>
+          <div class="input-group">
+            <input id="txtGroupName" class="form-control" placeholder="Name" name="groupName" type="text"
+              value="{{groupForm.group.groupName}}" [(ngModel)]="groupForm.group.groupName">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="student">Student:</label>
+          <div *ngIf="groupForm.members!=null">
+            <div *ngFor="let student of groupForm.members">
+              <label>
+                <input type="checkbox" name="student_{{student.studID}}" value="{{student.studID}}" [checked]="true" (change)="UpdateStudentListInGroup($event.target.checked,student)"/>
+                {{"Roll No:- " + student.RollNo  + " Name:- " + student.studName}}
+              </label>
+            </div>
+          </div>
+          <div *ngFor="let student of studentsList">
+            <label>
+              <input type="checkbox" name="student_{{student.studID}}" value="{{student.studID}}" [checked]="false" (change)="UpdateStudentListInGroup($event.target.checked,student)"/>
+              {{"Roll No:- " + student.RollNo  + " Name:- " + student.studName}}
+            </label>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="addGroupStudentMapping(groupForm)">Save</button>
+      <button type="button" class="btn btn-outline-dark" (click)="modal.dismiss('Cross click')">Cancel</button>
+    </div>
+  </ng-template>
+
+
+  <div class="col-sm-3">
+    <label for="inputState">State</label>
+    <select class="form-control" [(ngModel)]="selectedStateID" required #statID="ngModel" name="state"
+      (change)="getCityByStateID(selectedStateID)">
+      <option selected>Select State</option>
+      <option *ngFor="let state of stateList" value="{{state.statID}}">{{state.statName}}</option>
+    </select>
+    <div *ngIf="statID.invalid && (statID.dirty || statID.touched)" class="alert alert-danger">
+      Required
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <label for="inputCity">City</label>
+    <select class="form-control" [(ngModel)]="selectedCityID" required #cityID="ngModel" name="City"
+      (change)="getSchoolByCity(selectedCityID)">
+      <option selected>Select City</option>
+      <option *ngFor="let city of cityList" value="{{city.cityID}}">{{city.cityName}}</option>
+    </select>
+    <div *ngIf="cityID.invalid && (cityID.dirty || cityID.touched)" class="alert alert-danger">
+      Required
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <label for="inputSchool">School</label>
+    <select class="form-control" [(ngModel)]="selectedSchoolID" required #schoolID="ngModel" name="School"
+      (change)="getClassBySchool(selectedSchoolID)">
+      <option selected>Select School</option>
+      <option *ngFor="let school of schoolList" value="{{school.schlID}}">{{school.schoolName}}</option>
+    </select>
+    <div *ngIf="schoolID.invalid && (schoolID.dirty || schoolID.touched)" class="alert alert-danger">
+      Required
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <label for="inputClass">Class-Section</label>
+    <select class="form-control" [(ngModel)]="selectedClassID" required #classDetailsID="ngModel" name="Class-Section"
+      (change)="getGroupStudents(selectedClassID)">
+      <option selected>Select Class-Section</option>
+      <option *ngFor="let classDetails of classDetailsList" value="{{classDetails.classID}}">
+        {{classDetails.classStandard + "-" + classDetails.sectName}}
+      </option>
+    </select>
+    <div *ngIf="classDetailsID.invalid && (classDetailsID.dirty || classDetailsID.touched)" class="alert alert-danger">
+      Required
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    <label for="inputClass">Group Name</label>
+    <input type="text" [(ngModel)]="groupName" name="group_name">
+    <!-- <div *ngIf="group_name.invalid && (group_name.dirty || group_name.touched)" class="alert alert-danger">
+      Required
+    </div> -->
+  </div>
+  <div class="col-sm-6">
+    <button class="btn btn-info" (click)="addGroup(groupName)">Add New Group</button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>groupID</th>
+            <th>Group Name</th>
+            <th>Members</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let groupDetails of groupsDetailsWithMembers; let i=index;">
+            <td>{{i+1}}</td>
+            <td [hidden]="true">{{groupDetails.group.groupID}}</td>
+            <td>{{groupDetails.group.groupName}}</td>
+            <td><span *ngIf="groupDetails.members!=null"><span
+                  *ngFor="let student of groupDetails.members;">{{student.studName + " "}}</span></span></td>
+            <td><button class="btn btn-info" (click)="open(content,groupDetails)"><i class="fa fa-pencil"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
