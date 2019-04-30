@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HolidayCalendarComponent } from './holiday-calendar.component';
+import { FormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import { NgbModule,NgbDate } from '@ng-bootstrap/ng-bootstrap';
 
 describe('HolidayCalendarComponent', () => {
   let component: HolidayCalendarComponent;
@@ -8,7 +11,8 @@ describe('HolidayCalendarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HolidayCalendarComponent ]
+      declarations: [ HolidayCalendarComponent ],
+      imports:[FormsModule,HttpClientModule,NgbModule.forRoot()]
     })
     .compileComponents();
   }));

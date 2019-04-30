@@ -28,6 +28,7 @@ export class LoginService {
     console.log(user);
     return this.http.post<any>(environment.endpoint + 'User', JSON.stringify(user), httpOptions).pipe(
       tap((user) =>{
+        console.log(user);
           localStorage.setItem('isLoggedin',JSON.stringify(user)); 
           console.log(`added User w/ id=user`,user);
         }),

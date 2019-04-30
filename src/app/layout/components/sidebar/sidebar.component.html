@@ -7,7 +7,7 @@
             <img src="assets/images/faces/face1.jpg" alt="profile image">
           </div>
           <div class="text-wrapper">
-            <p class="profile-name">{{userDetails.userName}}</p>
+            <p class="profile-name" *ngIf="userDetails!=null">{{userDetails.userName}}</p>
             <div>
               <small class="designation text-muted"></small>
               <span class="status-indicator online"></span>
@@ -18,7 +18,7 @@
       </div>
     </li>
     <li class="nav-item">
-      {{userDetails.roleID}}
+     <span *ngIf="userDetails!=null"> {{userDetails.roleID}} </span>
       <!-- <a class="nav-link" routerLink="/dashboard" routerLinkActive="active" *ngIf="userDetails.roleID==1"> -->
         <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">
         <i class="menu-icon mdi mdi-television"></i>

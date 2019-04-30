@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   endpoint : 'https://localhost:44393/api/'
+  //endpoint : 'https://localhost:8081/api/'
 };
 
 /*

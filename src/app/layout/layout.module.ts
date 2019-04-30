@@ -7,6 +7,7 @@ import { LayoutComponent } from './layout.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { BreadcrumbsComponent } from "../breadcrumbs/breadcrumbs.component";
 
 @NgModule({
     imports: [
@@ -15,6 +16,6 @@ import { FooterComponent } from './components/footer/footer.component';
         NgbDropdownModule,
         
     ],
-    declarations: [LayoutComponent, SidebarComponent,NavbarComponent,FooterComponent]
+    declarations: [LayoutComponent, SidebarComponent,NavbarComponent,FooterComponent,BreadcrumbsComponent]
 })
 export class LayoutModule {}

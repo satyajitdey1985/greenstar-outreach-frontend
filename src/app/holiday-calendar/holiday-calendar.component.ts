@@ -46,7 +46,7 @@ export class HolidayCalendarComponent implements OnInit {
     this.holidayForm = {};
     this.modalService.dismissAll();
   }
-  open(content, data) {
+  open(content, data?:any) {
     if (data)
       this.holidayForm = data;
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {

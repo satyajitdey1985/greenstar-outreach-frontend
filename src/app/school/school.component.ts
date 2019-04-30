@@ -40,7 +40,7 @@ export class SchoolComponent implements OnInit {
     }
   }
 
-  open(content, data) {
+  open(content, data?:any) {
     if (data)
     {
       this.schoolForm = data;
